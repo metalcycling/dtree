@@ -1,5 +1,5 @@
 [project]
-name = "dtree"
+name = "dtree-metalcycling"
 description = "'dtree': Linux 'tree' but for dictionaries"
 readme = "README.md"
 license = { file = "LICENSE" }
