@@ -2,6 +2,20 @@
 
 Dictionaries are fun and useful!. But just like a folder structure, they can be multitiered storing all kinds of things in nested hierarchies. `tree` is a Linux utility that prints the multilevel structure of directories as a beautiful tree. `dtree` does the same but for dictionaries.
 
+## Installation
+
+This utility can be installed directly from PyPI as:
+
+```bash
+pip install dict-metalcycling
+```
+
+For local installations intended for development, from the top of this repository run:
+
+```bash
+pip install -e .
+```
+
 ## Example
 
 Consider the following dictionary
