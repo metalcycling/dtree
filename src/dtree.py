@@ -18,7 +18,7 @@ TEMP = None
 
 # %% Modules
 
-def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True, depth = 0, fill = ""):
+def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True, print_objects = False, depth = 0, fill = ""):
     """
     Prints the tree representation of a dictionary and its children
 
@@ -27,6 +27,7 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
     - node_name <str> (optional): Name of the dictionary to be used as the root node
     - max_depth <int> (optional): Maximum depth of the tree to be printed (e.g., 'max_depth = 0' only prints the root, 'max_depth = 1' prints the root and its immediate children)
     - print_datatypes <bool> (optional): Print the datatype of the leaf nodes in the tree (i.e., nodes at 'max_depth' are considered leaf nodes) and the datatype of the dictionary keys
+    - print_objects <bool> (optional): Print the string representation of the values for the leaf node
     """
 
     # Make sure the inputs are valid
@@ -83,7 +84,7 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
         if is_dict(value):
             if max_depth == None or depth < max_depth - 1:
                 TEMP += "%s%s%s\n" % (Fore.GREEN, str(key), Fore.WHITE)
-                dtree(value, node_name, max_depth, print_datatypes = print_datatypes, fill = fill + SEPARATOR if kdx < num_keys - 1 else fill + SPACING, depth = depth + 1)
+                dtree(value, node_name, max_depth, print_datatypes = print_datatypes, print_objects = print_objects, fill = fill + SEPARATOR if kdx < num_keys - 1 else fill + SPACING, depth = depth + 1)
             else:
                 if print_datatypes:
                     TEMP += "%s%s:%s %s<dict>%s\n" % (Fore.GREEN, str(key), Fore.WHITE, Fore.RED, Fore.WHITE)
@@ -91,8 +92,13 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
                     TEMP += "%s%s%s\n" % (Fore.GREEN, str(key), Fore.WHITE)
 
         else:
-            if print_datatypes:
-                TEMP += "%s%s:%s <%s>%s\n" % (Fore.BLUE, str(key), Fore.RED, type(value).__name__, Fore.WHITE)
+            if print_datatypes or print_objects:
+                entry = "%s%s:%s " % (Fore.BLUE, str(key), Fore.WHITE)
+                if print_datatypes:
+                    entry += "%s<%s>%s " % (Fore.RED, type(value).__name__, Fore.WHITE)
+                if print_objects:
+                    entry += "%s%s%s " % (Fore.YELLOW, str(value), Fore.WHITE)
+                TEMP += "%s%s\n" % (entry, Fore.WHITE)
             else:
                 TEMP += "%s%s%s\n" % (Fore.BLUE, str(key), Fore.WHITE)
 
