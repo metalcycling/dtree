@@ -5,6 +5,8 @@ Linux 'tree' but for Python
 # %% Modules
 
 from colorama import Fore
+from omegaconf import OmegaConf
+from omegaconf.dictconfig import DictConfig
 
 # %% Global variables
 
@@ -29,7 +31,9 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
 
     # Make sure the inputs are valid
 
-    assert isinstance(dictionary, dict), "Argument passed MUST be a dictionary"
+    is_dict = lambda variable: isinstance(variable, dict) or isinstance(variable, OmegaConf) or isinstance(variable, DictConfig)
+
+    assert is_dict(dictionary), "Argument passed MUST be a dictionary"
 
     if max_depth:
         assert max_depth >= 0, "Argument must be greater or equal to zero"
@@ -76,7 +80,7 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
         else:
             TEMP += BRANCH
 
-        if isinstance(value, dict):
+        if is_dict(value):
             if max_depth == None or depth < max_depth - 1:
                 TEMP += "%s%s%s\n" % (Fore.GREEN, str(key), Fore.WHITE)
                 dtree(value, node_name, max_depth, print_datatypes = print_datatypes, fill = fill + SEPARATOR if kdx < num_keys - 1 else fill + SPACING, depth = depth + 1)
