@@ -13,7 +13,7 @@ authors = [
 maintainers = [
     { name = "Pedro D. Bello-Maldonado", email = "metalcycling@gmail.com" },
 ]
-dynamic = ["version"]
+version = "0.1.0"
 
 [build-system]
 build-backend = "setuptools.build_meta"
