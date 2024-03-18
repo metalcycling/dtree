@@ -97,7 +97,17 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
                 if print_datatypes:
                     entry += "%s<%s>%s " % (Fore.RED, type(value).__name__, Fore.WHITE)
                 if print_objects:
-                    entry += "%s%s%s " % (Fore.YELLOW, str(value), Fore.WHITE)
+                    if isinstance(value, list):
+                        entry += "\n"
+                        for idx, item in enumerate(value):
+                            if kdx == num_keys - 1:
+                                entry += fill + SPACING + "- %s%s%s" % (Fore.YELLOW, str(item), Fore.WHITE)
+                            else:
+                                entry += fill + SEPARATOR + "- %s%s%s" % (Fore.YELLOW, str(item), Fore.WHITE)
+                            if idx < len(value) - 1:
+                                entry += "\n"
+                    else:
+                        entry += "%s%s%s " % (Fore.YELLOW, str(value), Fore.WHITE)
                 TEMP += "%s%s\n" % (entry, Fore.WHITE)
             else:
                 TEMP += "%s%s%s\n" % (Fore.BLUE, str(key), Fore.WHITE)
@@ -114,7 +124,12 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
 # % Testing
 
 if __name__ == "__main__":
+    # Example 1
     dictionary = { "A": { "B": { "C": 0, "D": "str" }, "E": None }, "F": { "G": 0.0, "H": set([]) } }
     dtree(dictionary, "with_name")
+
+    #Example 2
+    dictionary = { "A": { "B": [0, 1], "C": ["str_1", "str_2", "str_3"] }, "D": None }
+    dtree(dictionary, "lists_and_objects", print_objects = True)
 
 # %% End of script
