@@ -19,7 +19,7 @@ Using `dtree` you can print the tree structure in different ways:
 This utility can be installed directly from PyPI as:
 
 ```bash
-pip install dict-metalcycling
+pip install dtree-metalcycling
 ```
 
 For local installations intended for development, from the top of this repository run:
