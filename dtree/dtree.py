@@ -1,5 +1,5 @@
 """
-Linux 'tree' but for Python
+Linux 'tree' but for Python dictionaries
 """
 
 # %% Modules
@@ -18,7 +18,7 @@ TEMP = None
 
 # %% Modules
 
-def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True, print_objects = False, depth = 0, fill = ""):
+def dtree(dictionary, node_name=None, max_depth=None, print_datatypes=True, print_objects=False, depth=0, fill=""):
     """
     Prints the tree representation of a dictionary and its children
 
@@ -98,7 +98,10 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
                     entry += "%s<%s>%s " % (Fore.RED, type(value).__name__, Fore.WHITE)
                 if print_objects:
                     if isinstance(value, list):
-                        entry += "\n"
+                        if len(value) == 0:
+                            entry += "%s%s%s" % (Fore.YELLOW, "[]", Fore.WHITE)
+                        else:
+                            entry += "\n"
                         for idx, item in enumerate(value):
                             if kdx == num_keys - 1:
                                 entry += fill + SPACING + "- %s%s%s" % (Fore.YELLOW, str(item), Fore.WHITE)
@@ -121,7 +124,7 @@ def dtree(dictionary, node_name = None, max_depth = None, print_datatypes = True
     else:
         return
 
-# % Testing
+# %% Testing
 
 if __name__ == "__main__":
     # Example 1

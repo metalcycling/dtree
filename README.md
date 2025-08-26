@@ -1,4 +1,4 @@
-# **dtree**: Linux **tree** but for dictionaries
+# **dtree**: Linux **tree** but for Python dictionaries
 
 Dictionaries are fun and useful!. But just like a folder structure, they can be multitiered storing all kinds of things in nested hierarchies. `tree` is a Linux utility that prints the multilevel structure of directories as a beautiful tree. `dtree` does the same but for dictionaries.
 
@@ -16,13 +16,7 @@ Using `dtree` you can print the tree structure in different ways:
 
 ## Installation
 
-This utility can be installed directly from PyPI as:
-
-```bash
-pip install dtree-metalcycling
-```
-
-For local installations intended for development, from the top of this repository run:
+The utility can be installed with `pip`. For a local installation in development mode use:
 
 ```bash
 pip install -e .
