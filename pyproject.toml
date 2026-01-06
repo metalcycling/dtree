@@ -3,8 +3,8 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "dtree"
-version = "0.0.1"
+name = "dtree-metalcycling"
+version = "0.4.2"
 description = "'dtree': Linux 'tree' but for Python dictionaries"
 readme = "README.md"
 keywords = ["tree", "dictionary"]

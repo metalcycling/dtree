@@ -16,7 +16,13 @@ Using `dtree` you can print the tree structure in different ways:
 
 ## Installation
 
-The utility can be installed with `pip`. For a local installation in development mode use:
+This utility can be installed directly from PyPI as:
+
+```bash
+pip install dtree-metalcycling
+```
+
+For local installations intended for development, from the top of this repository run:
 
 ```bash
 pip install -e .
@@ -24,5 +30,5 @@ pip install -e .
 
 ## Known limitations
 
-This version currenly prints the `str` representation of the dictionary keys for the nodes of the tree. When keys are custom class objects, printing them could be very verbose so that would cause issues with the printed tree. I'll fix this in future PRs.
+This version currently prints the `str` representation of the dictionary keys for the nodes of the tree. When keys are custom class objects, printing them could be very verbose so that would cause issues with the printed tree. I'll fix this in future PRs.
 
